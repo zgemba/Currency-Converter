@@ -11,24 +11,24 @@ Refresh is forced by invoking `Refresh()`. Hook this to a timer to get fresh rat
 
 ## Some examples
 ```c#
-            CurrencyConverter cvt = CurrencyConverter.Instance;     // Singleton instance
+CurrencyConverter cvt = CurrencyConverter.Instance;     // Singleton instance
 
-            decimal euroValue = cvt.ConvertToEuro(100m, "USD");     // convert 100 USD to €
-            decimal usdValue = cvt.ConvertFromEuro(100m, "USD");    // convert 100€ to USD
+decimal euroValue = cvt.ConvertToEuro(100m, "USD");     // convert 100 USD to €
+decimal usdValue = cvt.ConvertFromEuro(100m, "USD");    // convert 100€ to USD
 
-            // force refresh in case we have stale data
-            if (DateTime.UtcNow - cvt.Time < new TimeSpan(24, 0, 0))
-                cvt.Refresh();
+// force refresh in case we have stale data
+if (DateTime.UtcNow - cvt.Time < new TimeSpan(24, 0, 0))
+            cvt.Refresh();
 
-            // was refresh successful?
-            if (cvt.IsRefresed)
-            {
-                // do cool stuff
-            }
-            else
-            { 
-                // maybe the ECB server is down?
-                // wait and try refresing later
-            }
+// was refresh successful?
+if (cvt.IsRefresed)
+{
+            // do cool stuff
+}
+else
+{ 
+            // maybe the ECB server is down?
+            // wait and try refresing later
+}
 
 ```
