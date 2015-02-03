@@ -55,6 +55,7 @@ namespace Zgemba.Utils
                                   currency = e.Attribute("currency").Value,
                                   rate = e.Attribute("rate").Value
                               }).ToDictionary(e => e.currency, e => Decimal.Parse(e.rate, System.Globalization.CultureInfo.InvariantCulture));
+                this.rates.Add("EUR", 1m);
 
                 this.Time = DateTime.ParseExact(doc.Root.Element(ns1 + "Cube").Element(ns1 + "Cube").Attribute("time").Value,
                                                 "yyyy-MM-dd",
